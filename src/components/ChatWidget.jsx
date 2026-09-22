@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const STREAMLIT_URL = "http://localhost:8501/?embed=true";
+const STREAMLIT_URL = `${import.meta.env.VITE_STREAMLIT_URL}/?embed=true`;
 
 function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +26,7 @@ function ChatWidget() {
           </div>
           <div className="chat-header-actions">
             <a
-              href="http://localhost:8501"
+              href={import.meta.env.VITE_STREAMLIT_URL}
               target="_blank"
               rel="noreferrer"
               className="chat-action-btn"

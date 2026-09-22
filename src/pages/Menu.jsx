@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DishCard from "../components/DishCard";
+import { API_BASE_URL } from "../utils/api";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
 const INITIAL_DISH_LIMIT = 9;
 
 function Menu() {
