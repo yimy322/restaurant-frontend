@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <section className="hero" aria-labelledby="hero-title">
@@ -7,8 +8,8 @@ function Home() {
           Sabores del Perú en cada plato: tradición, ingredientes frescos y el calor de siempre, en el corazón de la ciudad.
         </p>
         <div className="hero-actions">
-          <a href="/menu" className="btn btn-accent">Ver menú</a>
-          <a href="/reservas" className="btn btn-outline-home">Reservar mesa</a>
+          <Link to="/menu" className="btn btn-accent">Ver menú</Link>
+          <Link to="/reservas" className="btn btn-outline-home">Reservar mesa</Link>
         </div>
       </div>
     </section>
