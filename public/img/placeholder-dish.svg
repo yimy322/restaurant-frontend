@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 704 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d0a14"/>
+      <stop offset="50%" stop-color="#5c1220"/>
+      <stop offset="100%" stop-color="#2a060d"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3d082"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <circle cx="352" cy="220" r="100" fill="none" stroke="url(#goldGrad)" stroke-width="4" opacity="0.4"/>
+  <circle cx="352" cy="220" r="82" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="6,6" opacity="0.6"/>
+  <path d="M292 230 C292 180, 412 180, 412 230 Z" fill="url(#goldGrad)" opacity="0.85"/>
+  <circle cx="352" cy="172" r="10" fill="url(#goldGrad)"/>
+  <rect x="276" y="234" width="152" height="10" rx="5" fill="url(#goldGrad)" opacity="0.9"/>
+  <text x="352" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="700" fill="#f3d082" letter-spacing="1">LA HUACA</text>
+  <text x="352" y="395" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="400" fill="#e8d5b5" opacity="0.8">Fotografía próximamente</text>
+</svg>
