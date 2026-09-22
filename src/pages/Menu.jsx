@@ -2,31 +2,46 @@ import { useEffect, useState } from "react";
 import DishCard from "../components/DishCard";
 
 const API_BASE_URL = "http://127.0.0.1:8000";
+const INITIAL_DISH_LIMIT = 9;
 
 function Menu() {
   const [categories, setCategories] = useState([]);
   const [dishes, setDishes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/categories/`)
       .then((res) => res.json())
-      .then(setCategories);
+      .then(setCategories)
+      .catch((err) => console.error("Error fetching categories:", err));
 
     fetch(`${API_BASE_URL}/api/dishes/`)
       .then((res) => res.json())
-      .then(setDishes);
-  }, []); // [] = corre despues de que se renderiza el componente por primera vez
+      .then(setDishes)
+      .catch((err) => console.error("Error fetching dishes:", err));
+  }, []);
+
+  const handleCategoryChange = (categoryId) => {
+    setSelectedCategory(categoryId);
+    setShowAll(false);
+  };
 
   const filteredDishes = selectedCategory
     ? dishes.filter((dish) => dish.category_id === selectedCategory)
     : dishes;
 
+  const displayedDishes = showAll
+    ? filteredDishes
+    : filteredDishes.slice(0, INITIAL_DISH_LIMIT);
+
+  const hasMore = filteredDishes.length > INITIAL_DISH_LIMIT;
+
   return (
-    <section class="menu-section container">
-      <div class="section-intro">
-        <span class="eyebrow">Nuestro menú</span>
-        <h1 class="section-title">Platos hechos con tradición</h1>
+    <section className="menu-section container">
+      <div className="section-intro">
+        <span className="eyebrow">Nuestro menú</span>
+        <h1 className="section-title">Platos hechos con tradición</h1>
       </div>
 
       <div className="menu-filters" role="group" aria-label="Filtrar platos por categoría">
@@ -34,7 +49,7 @@ function Menu() {
           type="button"
           className={selectedCategory === null ? "category-btn active" : "category-btn"}
           aria-pressed={selectedCategory === null}
-          onClick={() => setSelectedCategory(null)}
+          onClick={() => handleCategoryChange(null)}
         >
           Todos
         </button>
@@ -45,7 +60,7 @@ function Menu() {
             type="button"
             className={selectedCategory === category.id ? "category-btn active" : "category-btn"}
             aria-pressed={selectedCategory === category.id}
-            onClick={() => setSelectedCategory(category.id)}
+            onClick={() => handleCategoryChange(category.id)}
           >
             {category.name}
           </button>
@@ -53,7 +68,7 @@ function Menu() {
       </div>
 
       <div className="dish-grid">
-        {filteredDishes.map((dish) => {
+        {displayedDishes.map((dish) => {
           const category = categories.find((c) => c.id === dish.category_id);
           return (
             <DishCard
@@ -67,6 +82,20 @@ function Menu() {
           );
         })}
       </div>
+
+      {hasMore && (
+        <div className="menu-load-more">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setShowAll((prev) => !prev)}
+          >
+            {showAll
+              ? "Ver menos platos ▲"
+              : `Ver más platos (${filteredDishes.length - INITIAL_DISH_LIMIT} más) ▼`}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
