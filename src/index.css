@@ -131,6 +131,12 @@ input {
   opacity: 1;
 }
 
+.btn-outline-home {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
 .btn-block {
   display: flex;
   width: 100%;

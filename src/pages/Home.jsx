@@ -8,7 +8,7 @@ function Home() {
         </p>
         <div className="hero-actions">
           <a href="/menu" className="btn btn-accent">Ver menú</a>
-          <a href="/reservas" className="btn btn-outline">Reservar mesa</a>
+          <a href="/reservas" className="btn btn-outline-home">Reservar mesa</a>
         </div>
       </div>
     </section>
